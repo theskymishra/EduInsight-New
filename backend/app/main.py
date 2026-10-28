@@ -1,5 +1,6 @@
 
 from contextlib import asynccontextmanager
+import os
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -63,13 +64,22 @@ app = FastAPI(
     title="EduInsight API",
     description="Student performance analytics and reporting system",
     version="0.1.0",
-    lifespan=lifespan,
 )
+
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://eduinsight-frontend-akash.onrender.com",
+]
+
+frontend_url = os.getenv("FRONTEND_URL", "").strip().rstrip("/")
+if frontend_url and frontend_url not in allowed_origins:
+    allowed_origins.append(frontend_url)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
+    allow_origins=allowed_origins,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -83,6 +93,7 @@ app.include_router(assessments_router)
 app.include_router(attendance.router)
 app.include_router(interventions.router)
 app.include_router(student_portal.router)
+
 
 @app.get("/")
 def root():
