@@ -28,6 +28,7 @@ import StudentManagement from './components/StudentManagement'
 import AttendanceManagement from './components/AttendanceManagement'
 import StudentDetail from './components/StudentDetail'
 import AssessmentManagement from './components/AssessmentManagement'
+import PerformanceAnalytics from './components/PerformanceAnalytics'
 
 function Brand({ light = false }) {
   return (
@@ -662,6 +663,22 @@ function Workspace({ user, token, onLogout }) {
             <ClipboardList size={17} />
             Assessments
           </button>
+
+          <button
+            type="button"
+            className={
+              activeSection === 'analytics'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => {
+              setSelectedStudentId(null)
+              setActiveSection('analytics')
+            }}
+          >
+            <TrendingUp size={17} />
+            Performance Analytics
+          </button>
         </nav>
       )}
 
@@ -701,6 +718,8 @@ function Workspace({ user, token, onLogout }) {
             <AttendanceManagement token={token} />
           ) : activeSection === 'assessments' ? (
             <AssessmentManagement token={token} />
+          ) : activeSection === 'analytics' ? (
+            <PerformanceAnalytics token={token} />
           ) : (
             <FacultyDashboard token={token} />
           )

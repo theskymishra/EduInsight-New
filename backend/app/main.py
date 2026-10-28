@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.database import create_mongo_client, get_database
 from app.routers.auth import router as auth_router
+from app.routers.analytics import router as analytics_router
 from app.routers.faculty import router as faculty_router
 from app.routers.students import router as students_router
 from app.routers.early_warning import router as early_warning_router
@@ -67,6 +68,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+app.include_router(analytics_router)
 app.include_router(faculty_router)
 app.include_router(students_router)
 app.include_router(early_warning_router)

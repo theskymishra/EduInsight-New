@@ -274,3 +274,16 @@ export async function getStudentAssessments(
     },
   )
 }
+
+
+export async function getPerformanceAnalytics(token) {
+  if (!token) {
+    throw new Error('Please sign in to view performance analytics.')
+  }
+
+  return request('/api/analytics/performance', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}
