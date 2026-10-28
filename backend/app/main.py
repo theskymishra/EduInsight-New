@@ -8,6 +8,7 @@ from app.routers.auth import router as auth_router
 from app.routers.faculty import router as faculty_router
 from app.routers.students import router as students_router
 from app.core import database
+from app.routers.early_warning import router as early_warning_router
 
 
 @asynccontextmanager
@@ -56,6 +57,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(faculty_router)
 app.include_router(students_router)
+app.include_router(early_warning_router)
 
 @app.get("/")
 def root():
