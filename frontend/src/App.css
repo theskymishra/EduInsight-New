@@ -3716,3 +3716,365 @@
     font-size: 11px;
   }
 }
+
+/* Student intervention management */
+.student-interventions {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  color: #18253e;
+}
+
+.intervention-form-card {
+  padding: 24px;
+  margin-bottom: 30px;
+}
+
+.intervention-section-heading,
+.intervention-list-heading,
+.intervention-record-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.intervention-section-heading {
+  justify-content: flex-start;
+  margin-bottom: 22px;
+}
+
+.intervention-heading-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 11px;
+  background: #edf3ff;
+  color: #315a9f;
+}
+
+.intervention-section-heading h3,
+.intervention-list-heading h3 {
+  margin: 0;
+  color: #172746;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.intervention-section-heading p,
+.intervention-list-heading p {
+  margin: 6px 0 0;
+  color: #7b879b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.intervention-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.intervention-form label,
+.intervention-record-update label {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  color: #35445f;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.intervention-form input,
+.intervention-form select,
+.intervention-form textarea,
+.intervention-filter select,
+.intervention-record-update select,
+.intervention-record-update textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid #dfe6f0;
+  border-radius: 9px;
+  outline: none;
+  background: #fbfcfe;
+  color: #24334f;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.intervention-form input:focus,
+.intervention-form select:focus,
+.intervention-form textarea:focus,
+.intervention-filter select:focus,
+.intervention-record-update select:focus,
+.intervention-record-update textarea:focus {
+  border-color: #7698db;
+  box-shadow: 0 0 0 3px rgb(79 123 205 / 10%);
+}
+
+.intervention-form textarea,
+.intervention-record-update textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.intervention-field-wide {
+  grid-column: 1 / -1;
+}
+
+.intervention-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.intervention-list-heading {
+  margin-bottom: 18px;
+}
+
+.intervention-refresh-button,
+.intervention-save-notes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 39px;
+  padding: 9px 13px;
+  border: 1px solid #e0e6ef;
+  border-radius: 9px;
+  background: #fff;
+  color: #475873;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.intervention-refresh-button:disabled,
+.intervention-save-notes:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.intervention-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: #65738b;
+  font-size: 13px;
+}
+
+.intervention-filter label {
+  font-weight: 650;
+}
+
+.intervention-filter select {
+  width: auto;
+  min-width: 155px;
+  padding: 9px 11px;
+  background: #fff;
+}
+
+.intervention-filter span {
+  margin-left: auto;
+}
+
+.intervention-empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 42px 20px;
+  border: 1px dashed #d9e1ed;
+  border-radius: 14px;
+  background: #fff;
+  color: #8390a5;
+  text-align: center;
+}
+
+.intervention-empty-state h3 {
+  margin: 0;
+  color: #24334f;
+  font-size: 16px;
+}
+
+.intervention-empty-state p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.intervention-record-list {
+  display: grid;
+  gap: 16px;
+}
+
+.intervention-record-card {
+  padding: 22px;
+  border: 1px solid #e7ebf2;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgb(30 49 82 / 4%);
+}
+
+.intervention-student-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: #60718d;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.intervention-record-top h3 {
+  margin: 0;
+  color: #172746;
+  font-size: 17px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.intervention-priority {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #edf3ff;
+  color: #315a9f;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: capitalize;
+}
+
+.priority-high,
+.priority-urgent {
+  background: #fff0ed;
+  color: #b33b30;
+}
+
+.priority-low {
+  background: #edf8f0;
+  color: #277246;
+}
+
+.intervention-record-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.intervention-detail-label {
+  color: #7b879b;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.intervention-record-grid p {
+  margin: 7px 0 0;
+  color: #455570;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.intervention-record-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-top: 20px;
+  padding: 14px 0;
+  border-top: 1px solid #edf0f5;
+  border-bottom: 1px solid #edf0f5;
+  color: #65738b;
+  font-size: 12px;
+}
+
+.intervention-record-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.intervention-record-update {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.65fr) minmax(0, 1.5fr) auto;
+  align-items: end;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.intervention-save-notes {
+  border-color: #284e92;
+  background: #284e92;
+  color: #fff;
+}
+
+.intervention-save-notes:hover:not(:disabled) {
+  background: #1d3d77;
+}
+
+.intervention-spinner {
+  animation: intervention-spin 1s linear infinite;
+}
+
+@keyframes intervention-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .intervention-form-card {
+    padding: 18px;
+  }
+
+  .intervention-form,
+  .intervention-record-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intervention-field-wide,
+  .intervention-form-actions {
+    grid-column: auto;
+  }
+
+  .intervention-record-update {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .intervention-record-update .intervention-save-notes {
+    width: 100%;
+  }
+
+  .intervention-record-card {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intervention-list-heading {
+    align-items: flex-start;
+  }
+
+  .intervention-filter {
+    flex-wrap: wrap;
+  }
+
+  .intervention-filter span {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .intervention-record-top {
+    align-items: flex-start;
+  }
+}

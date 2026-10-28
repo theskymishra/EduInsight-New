@@ -287,3 +287,58 @@ export async function getPerformanceAnalytics(token) {
     },
   })
 }
+
+export async function getInterventions(
+  token,
+  { studentProfileId = '', status = '' } = {},
+) {
+  if (!token) {
+    throw new Error('Please sign in to manage student interventions.')
+  }
+
+  const params = new URLSearchParams()
+  if (studentProfileId) {
+    params.set('student_profile_id', studentProfileId)
+  }
+  if (status) {
+    params.set('status', status)
+  }
+
+  const query = params.toString()
+
+  return request(`/api/interventions${query ? `?${query}` : ''}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}
+
+export async function createIntervention(token, intervention) {
+  if (!token) {
+    throw new Error('Please sign in to manage student interventions.')
+  }
+
+  return request('/api/interventions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(intervention),
+  })
+}
+
+export async function updateIntervention(token, id, changes) {
+  if (!token) {
+    throw new Error('Please sign in to manage student interventions.')
+  }
+
+  return request(`/api/interventions/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(changes),
+  })
+}

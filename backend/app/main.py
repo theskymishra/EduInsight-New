@@ -12,6 +12,7 @@ from app.routers.students import router as students_router
 from app.routers.early_warning import router as early_warning_router
 from app.routers.assessments import router as assessments_router
 from app.routers import attendance
+from app.routers import interventions
 
 
 @asynccontextmanager
@@ -74,7 +75,7 @@ app.include_router(students_router)
 app.include_router(early_warning_router)
 app.include_router(assessments_router)
 app.include_router(attendance.router)
-
+app.include_router(interventions.router)
 
 @app.get("/")
 def root():
