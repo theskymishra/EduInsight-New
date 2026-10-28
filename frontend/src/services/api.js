@@ -164,3 +164,113 @@ export async function getStudent(token, id) {
     },
   })
 }
+
+
+
+export async function recordAttendance(token, studentId, attendance) {
+  if (!token) {
+    throw new Error('Please sign in to record attendance.')
+  }
+
+  return request(
+    `/api/students/${encodeURIComponent(studentId)}/attendance`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(attendance),
+    },
+  )
+}
+
+export async function getStudentAttendance(
+  token,
+  studentId,
+  { status, startDate, endDate } = {},
+) {
+  if (!token) {
+    throw new Error('Please sign in to view attendance.')
+  }
+
+  const params = new URLSearchParams()
+
+  if (status) params.set('status', status)
+  if (startDate) params.set('start_date', startDate)
+  if (endDate) params.set('end_date', endDate)
+
+  const query = params.toString()
+
+  return request(
+    `/api/students/${encodeURIComponent(studentId)}/attendance${query ? `?${query}` : ''}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+}
+
+export async function getStudentAttendanceSummary(token, studentId) {
+  if (!token) {
+    throw new Error('Please sign in to view attendance analytics.')
+  }
+
+  return request(
+    `/api/students/${encodeURIComponent(studentId)}/attendance/summary`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+}
+
+
+
+export async function recordAssessment(token, studentId, assessment) {
+  if (!token) {
+    throw new Error('Please sign in to record an assessment.')
+  }
+
+  return request(
+    `/api/students/${encodeURIComponent(studentId)}/assessments`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(assessment),
+    },
+  )
+}
+
+export async function getStudentAssessments(
+  token,
+  studentId,
+  subject = '',
+) {
+  if (!token) {
+    throw new Error('Please sign in to view assessments.')
+  }
+
+  const params = new URLSearchParams()
+
+  if (subject.trim()) {
+    params.set('subject', subject.trim())
+  }
+
+  const query = params.toString()
+
+  return request(
+    `/api/students/${encodeURIComponent(studentId)}/assessments${query ? `?${query}` : ''}`,
+    {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+}

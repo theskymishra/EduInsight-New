@@ -1,3 +1,4 @@
+
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
@@ -7,8 +8,9 @@ from app.core.database import create_mongo_client, get_database
 from app.routers.auth import router as auth_router
 from app.routers.faculty import router as faculty_router
 from app.routers.students import router as students_router
-from app.core import database
 from app.routers.early_warning import router as early_warning_router
+from app.routers.assessments import router as assessments_router
+from app.routers import attendance
 
 
 @asynccontextmanager
@@ -20,6 +22,7 @@ async def lifespan(app: FastAPI):
         database = get_database(client)
 
         database.users.create_index("email", unique=True)
+
         database.students.create_index(
             [("student_id", 1)],
             unique=True,
@@ -30,6 +33,15 @@ async def lifespan(app: FastAPI):
             [("email", 1)],
             unique=True,
             partialFilterExpression={"email": {"$type": "string"}},
+        )
+
+        database.student_attendance.create_index(
+            [
+                ("student_profile_id", 1),
+                ("attendance_date", 1),
+            ],
+            unique=True,
+            name="unique_student_attendance_date",
         )
 
         app.state.mongo_client = client
@@ -58,6 +70,9 @@ app.include_router(auth_router)
 app.include_router(faculty_router)
 app.include_router(students_router)
 app.include_router(early_warning_router)
+app.include_router(assessments_router)
+app.include_router(attendance.router)
+
 
 @app.get("/")
 def root():
