@@ -40,24 +40,50 @@ function StudentDetail({ token, studentId, onBack }) {
   const [assessments, setAssessments] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [attendanceError, setAttendanceError] = useState('')
+  const [assessmentError, setAssessmentError] = useState('')
 
   async function loadStudent() {
     setLoading(true)
     setError('')
+    setAttendanceError('')
+    setAssessmentError('')
+    setAttendance(null)
+    setAssessments([])
 
     try {
-      const [studentResult, attendanceResult, assessmentResult] =
-        await Promise.all([
-          getStudent(token, studentId),
-          getStudentAttendanceSummary(token, studentId),
-          getStudentAssessments(token, studentId),
-        ])
-
+      const studentResult = await getStudent(token, studentId)
       setStudent(studentResult)
-      setAttendance(attendanceResult)
-      setAssessments(assessmentResult.items || [])
+
+      if (studentResult.active === false) {
+        setAttendanceError('Live attendance records are unavailable for inactive students.')
+        setAssessmentError('Live assessment records are unavailable for inactive students.')
+        return
+      }
+
+      const [attendanceResult, assessmentResult] = await Promise.allSettled([
+        getStudentAttendanceSummary(token, studentId),
+        getStudentAssessments(token, studentId),
+      ])
+
+      if (attendanceResult.status === 'fulfilled') {
+        setAttendance(attendanceResult.value)
+      } else {
+        setAttendanceError(
+          attendanceResult.reason?.message || 'Unable to load attendance records.',
+        )
+      }
+
+      if (assessmentResult.status === 'fulfilled') {
+        setAssessments(assessmentResult.value.items || [])
+      } else {
+        setAssessmentError(
+          assessmentResult.reason?.message || 'Unable to load assessment records.',
+        )
+      }
     } catch (err) {
-      setError(err.message || 'Unable to load the student report.')
+      setStudent(null)
+      setError(err.message || 'Unable to load the student profile.')
     } finally {
       setLoading(false)
     }
@@ -205,24 +231,43 @@ function StudentDetail({ token, studentId, onBack }) {
           <article className="student-report-kpi">
             <span className="student-report-kpi-icon"><TrendingUp size={19} /></span>
             <span>Average assessment</span>
-            <strong>{formatPercentage(averagePercentage)}</strong>
-            <small>{assessments.length} assessment{assessments.length === 1 ? '' : 's'}</small>
+            <strong>{assessmentError ? 'Unavailable' : formatPercentage(averagePercentage)}</strong>
+            <small>
+              {assessmentError
+                ? 'Assessment data could not be loaded'
+                : `${assessments.length} assessment${assessments.length === 1 ? '' : 's'}`}
+            </small>
           </article>
 
           <article className="student-report-kpi">
             <span className="student-report-kpi-icon"><Activity size={19} /></span>
             <span>Attendance rate</span>
-            <strong>{formatPercentage(attendance?.attendance_percentage)}</strong>
-            <small>{attendance?.total_records ?? 0} attendance records</small>
+            <strong>{attendanceError ? 'Unavailable' : formatPercentage(attendance?.attendance_percentage)}</strong>
+            <small>
+              {attendanceError
+                ? 'Attendance data could not be loaded'
+                : `${attendance?.total_records ?? 0} attendance records`}
+            </small>
           </article>
 
           <article className="student-report-kpi">
             <span className="student-report-kpi-icon"><CalendarDays size={19} /></span>
             <span>Present</span>
-            <strong>{attendance?.present ?? 0}</strong>
-            <small>{attendance?.absent ?? 0} absent · {attendance?.leave ?? 0} leave</small>
+            <strong>{attendanceError ? '—' : attendance?.present ?? 0}</strong>
+            <small>
+              {attendanceError
+                ? 'Attendance data unavailable'
+                : `${attendance?.absent ?? 0} absent · ${attendance?.leave ?? 0} leave`}
+            </small>
           </article>
         </div>
+        {attendanceError && (
+          <div className="student-report-empty" role="alert">
+            <AlertCircle size={22} />
+            <strong>Unable to load attendance details</strong>
+            <p>{attendanceError}</p>
+          </div>
+        )}
       </section>
 
       <section className="student-report-section">
@@ -236,7 +281,13 @@ function StudentDetail({ token, studentId, onBack }) {
           </span>
         </div>
 
-        {assessments.length ? (
+        {assessmentError ? (
+          <div className="student-report-empty" role="alert">
+            <AlertCircle size={22} />
+            <strong>Unable to load assessment history</strong>
+            <p>{assessmentError}</p>
+          </div>
+        ) : assessments.length ? (
           <div className="student-report-table-wrap">
             <table className="student-report-table">
               <thead>
