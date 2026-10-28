@@ -12,6 +12,7 @@ import {
 import {
   createIntervention,
   getInterventions,
+  getStudentAssessments,
   getStudents,
   updateIntervention,
 } from '../services/api'
@@ -37,6 +38,7 @@ const STATUS_LABELS = {
 function StudentInterventions({ token }) {
   const [students, setStudents] = useState([])
   const [interventions, setInterventions] = useState([])
+  const [outcomes, setOutcomes] = useState({})
   const [form, setForm] = useState(EMPTY_FORM)
   const [statusFilter, setStatusFilter] = useState('')
   const [loading, setLoading] = useState(true)
@@ -78,6 +80,29 @@ function StudentInterventions({ token }) {
   useEffect(() => {
     loadInterventions()
   }, [loadInterventions])
+
+  useEffect(() => {
+    let cancelled = false
+    const studentIds = [...new Set(interventions.map((item) => item.student_profile_id).filter(Boolean))]
+    if (!studentIds.length) {
+      setOutcomes({})
+      return () => { cancelled = true }
+    }
+    Promise.allSettled(studentIds.map(async (studentId) => {
+      const result = await getStudentAssessments(token, studentId)
+      return [studentId, result.items || []]
+    })).then((results) => {
+      if (cancelled) return
+      const next = {}
+      results.forEach((result) => {
+        if (result.status !== 'fulfilled') return
+        const [studentId, assessments] = result.value
+        next[studentId] = assessments
+      })
+      setOutcomes(next)
+    })
+    return () => { cancelled = true }
+  }, [interventions, token])
 
   function updateForm(event) {
     const { name, value } = event.target
@@ -348,6 +373,30 @@ function StudentInterventions({ token }) {
                 <span>Assigned: {item.assigned_to || 'Unassigned'}</span>
               </div>
 
+              {(() => {
+                const assessments = outcomes[item.student_profile_id] || []
+                const interventionDate = (item.created_at || '').slice(0, 10)
+                const before = assessments.filter((assessment) => assessment.assessment_date < interventionDate)
+                const after = assessments.filter((assessment) => assessment.assessment_date >= interventionDate)
+                const average = (items) => items.length
+                  ? items.reduce((total, assessment) => total + Number(assessment.percentage || 0), 0) / items.length
+                  : null
+                const beforeAverage = average(before)
+                const afterAverage = average(after)
+                return (
+                  <div className="intervention-outcome">
+                    <strong>Assessment comparison</strong>
+                    <div className="intervention-outcome-values">
+                      <span>Before: {beforeAverage === null ? 'No data' : `${beforeAverage.toFixed(1)}%`} ({before.length})</span>
+                      <span>On/after start date: {afterAverage === null ? 'No data' : `${afterAverage.toFixed(1)}%`} ({after.length})</span>
+                      {beforeAverage !== null && afterAverage !== null && (
+                        <span className="intervention-outcome-change">Change: {(afterAverage - beforeAverage) > 0 ? '+' : ''}{(afterAverage - beforeAverage).toFixed(1)} percentage points</span>
+                      )}
+                    </div>
+                    <small>Assessment averages are descriptive snapshots, not proof of intervention impact.</small>
+                  </div>
+                )
+              })()}
               <div className="intervention-record-update">
                 <label>
                   Status
