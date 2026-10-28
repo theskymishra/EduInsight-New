@@ -20,10 +20,14 @@ import {
   RefreshCw,
   TrendingUp,
   Sparkles,
+  UserRound,
   Users,
 } from 'lucide-react'
 import { getFacultyDashboard, login } from './services/api'
 import './App.css'
+import { ThemeProvider } from './context/ThemeContext'
+import ThemeToggle from './components/ThemeToggle'
+import StudentPortal from './components/StudentPortal'
 import StudentManagement from './components/StudentManagement'
 import AttendanceManagement from './components/AttendanceManagement'
 import StudentDetail from './components/StudentDetail'
@@ -154,9 +158,12 @@ function LoginPage({ onLogin, sessionMessage }) {
       <section className="form-panel">
         <div className="form-topline">
           <Brand />
-          <span className="secure-label">
-            <LockKeyhole size={13} /> SECURE ACCESS
-          </span>
+          <div className="form-topline-actions">
+            <ThemeToggle showLabel={false} />
+            <span className="secure-label">
+              <LockKeyhole size={13} /> SECURE ACCESS
+            </span>
+          </div>
         </div>
 
         <div className="login-content">
@@ -579,6 +586,7 @@ function Workspace({ user, token, onLogout }) {
         </div>
 
         <div className="workspace-header-actions">
+          <ThemeToggle />
           <div className="workspace-user">
             <div className="workspace-user-avatar">
               {(user?.full_name || user?.name || user?.email || 'U')
@@ -587,7 +595,11 @@ function Workspace({ user, token, onLogout }) {
             </div>
             <div>
               <strong>{user?.full_name || user?.name || 'User'}</strong>
-              <span>{user?.role || 'Student'}</span>
+              <span>
+                {user?.role
+                  ? user.role.charAt(0).toUpperCase() + user.role.slice(1)
+                  : 'Student'}
+              </span>
             </div>
           </div>
 
@@ -602,7 +614,7 @@ function Workspace({ user, token, onLogout }) {
         </div>
       </header>
 
-      {isFaculty && (
+      {isFaculty ? (
         <nav className="workspace-navigation" aria-label="Faculty navigation">
           <button
             type="button"
@@ -712,6 +724,73 @@ function Workspace({ user, token, onLogout }) {
             Student Progress Explorer
           </button>
         </nav>
+      ) : (
+        <nav className="workspace-navigation" aria-label="Student navigation">
+          <button
+            type="button"
+            className={
+              activeSection === 'overview'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => setActiveSection('overview')}
+          >
+            <BarChart3 size={17} />
+            Overview
+          </button>
+
+          <button
+            type="button"
+            className={
+              activeSection === 'profile'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => setActiveSection('profile')}
+          >
+            <UserRound size={17} />
+            My Profile
+          </button>
+
+          <button
+            type="button"
+            className={
+              activeSection === 'assessments'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => setActiveSection('assessments')}
+          >
+            <ClipboardList size={17} />
+            Assessments
+          </button>
+
+          <button
+            type="button"
+            className={
+              activeSection === 'attendance'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => setActiveSection('attendance')}
+          >
+            <CalendarDays size={17} />
+            Attendance
+          </button>
+
+          <button
+            type="button"
+            className={
+              activeSection === 'progress'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => setActiveSection('progress')}
+          >
+            <TrendingUp size={17} />
+            Academic Progress
+          </button>
+        </nav>
       )}
 
       <main className="workspace-content">
@@ -760,18 +839,18 @@ function Workspace({ user, token, onLogout }) {
             <FacultyDashboard token={token} />
           )
         ) : (
-          <section className="student-welcome">
-            <div className="student-eyebrow">STUDENT WORKSPACE</div>
-            <h1>Welcome to EduInsight</h1>
-            <p>Your personalized academic workspace is being prepared.</p>
-          </section>
+          <StudentPortal
+            token={token}
+            activeTab={activeSection}
+            onTabChange={setActiveSection}
+          />
         )}
       </main>
     </div>
   )
 }
 
-export default function App() {
+function AppContent() {
   const [sessionMessage, setSessionMessage] = useState('')
   const [session, setSession] = useState(() => {
     try {
@@ -834,5 +913,13 @@ export default function App() {
       onLogin={handleLogin}
       sessionMessage={sessionMessage}
     />
+  )
+}
+
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   )
 }

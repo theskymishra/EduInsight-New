@@ -4495,3 +4495,1956 @@
     text-align: left;
   }
 }
+
+
+/* -------------------------------------------------------------
+   THEME TOGGLE & HEADER ACTIONS
+------------------------------------------------------------- */
+.form-topline-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 14px;
+  color: #4b5a75;
+  border: 1px solid #e1e7f0;
+  border-radius: 9px;
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 180ms ease;
+  user-select: none;
+}
+
+.theme-toggle:hover {
+  color: #3b5acc;
+  border-color: #c7d4f6;
+  background: #f7f9ff;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-label {
+  line-height: 1;
+}
+
+/* -------------------------------------------------------------
+   STUDENT PORTAL
+------------------------------------------------------------- */
+.student-portal {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: fadeIn 220ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.student-portal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 30px;
+  border: 1px solid #e5ebf4;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(27, 44, 86, 0.035);
+}
+
+.student-identity {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.student-portal-avatar {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #5b7ef8, #3b57cc);
+  color: #ffffff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(67, 97, 219, 0.28);
+  flex-shrink: 0;
+}
+
+.student-identity-text h1 {
+  margin: 6px 0 4px;
+  color: #17233b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.student-portal-badge-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.student-id-pill,
+.student-verified-pill,
+.student-class-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.student-id-pill {
+  color: #3b57cc;
+  background: #eef3ff;
+  border: 1px solid #d8e3ff;
+  letter-spacing: 0.5px;
+}
+
+.student-verified-pill {
+  color: #1a7a58;
+  background: #edfcf5;
+  border: 1px solid #c9f2df;
+}
+
+.student-class-pill {
+  color: #633399;
+  background: #f7efff;
+  border: 1px solid #edd5ff;
+}
+
+.student-department-line {
+  margin: 0;
+  color: #687791;
+  font-size: 13px;
+}
+
+.student-refresh-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  color: #42526e;
+  border: 1px solid #dfe5ef;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 650;
+  transition: all 180ms ease;
+}
+
+.student-refresh-button:hover:not(:disabled) {
+  color: #3655c7;
+  border-color: #c4d3fa;
+  background: #f8faff;
+}
+
+.student-spinning-icon {
+  animation: spin 900ms linear infinite;
+}
+
+/* Tabs Navigation */
+.student-tabs-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #e5ebf4;
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+
+.student-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  color: #55657f;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 650;
+  transition: all 180ms ease;
+  white-space: nowrap;
+}
+
+.student-tab-btn:hover {
+  color: #1f2b42;
+  background: #f1f4f9;
+}
+
+.student-tab-btn.active {
+  color: #3856cd;
+  background: #eef3ff;
+  border-color: #d6e2ff;
+}
+
+.tab-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  color: #3b57cc;
+  background: #dce7ff;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.student-tab-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* KPI Metric Cards */
+.student-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+.student-kpi-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px;
+  border: 1px solid #e5ebf4;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(27, 44, 86, 0.03);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.student-kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27, 44, 86, 0.06);
+}
+
+.kpi-icon-wrap {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+.kpi-icon-wrap.icon-blue {
+  color: #3856cd;
+  background: #edf2ff;
+}
+
+.kpi-icon-wrap.icon-green {
+  color: #188056;
+  background: #ebfaf2;
+}
+
+.kpi-icon-wrap.icon-violet {
+  color: #6933a3;
+  background: #f4ecfc;
+}
+
+.kpi-icon-wrap.icon-amber {
+  color: #9c6014;
+  background: #fef7ea;
+}
+
+.kpi-label {
+  color: #687791;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 6px;
+}
+
+.kpi-value {
+  color: #17233b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.kpi-sub {
+  color: #7d8ca4;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Two-column overview layout */
+.student-overview-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+}
+
+.student-overview-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #e5ebf4;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(27, 44, 86, 0.03);
+}
+
+.overview-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.overview-card-header h3 {
+  margin: 0 0 4px;
+  color: #17233b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.overview-card-header p {
+  margin: 0;
+  color: #72819a;
+  font-size: 12.5px;
+}
+
+.overview-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  color: #3b57cc;
+  border: 1px solid #dce5fa;
+  border-radius: 8px;
+  background: #f7f9ff;
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 160ms ease;
+  white-space: nowrap;
+}
+
+.overview-link-btn:hover {
+  background: #edf2ff;
+  border-color: #c7d6fc;
+}
+
+/* Recent assessments list */
+.student-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.student-recent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border: 1px solid #edf1f7;
+  border-radius: 12px;
+  background: #fbfcff;
+  transition: background 150ms ease;
+}
+
+.student-recent-row:hover {
+  background: #f4f7fc;
+}
+
+.recent-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.recent-subject {
+  color: #4b62d4;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recent-name {
+  color: #1d2a44;
+  font-size: 13.5px;
+  font-weight: 650;
+}
+
+.recent-date {
+  color: #7a88a0;
+  font-size: 11.5px;
+}
+
+.recent-score-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.recent-badge,
+.table-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: 'DM Sans', monospace, sans-serif;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.badge-high {
+  color: #12794c;
+  background: #e9fbf2;
+  border: 1px solid #c2f5d9;
+}
+
+.badge-mid {
+  color: #2b50d8;
+  background: #edf2ff;
+  border: 1px solid #d3e0ff;
+}
+
+.badge-low {
+  color: #ab4410;
+  background: #fff3ec;
+  border: 1px solid #fedccb;
+}
+
+.badge-neutral {
+  color: #55657e;
+  background: #f1f4f9;
+  border: 1px solid #e1e7f0;
+}
+
+.recent-raw {
+  color: #7a88a0;
+  font-size: 11px;
+}
+
+/* Charts */
+.student-chart-container,
+.student-full-chart-wrap {
+  width: 100%;
+  padding: 16px 12px 10px;
+  border: 1px solid #edf1f7;
+  border-radius: 14px;
+  background: #fafbfe;
+}
+
+.student-svg-chart {
+  width: 100%;
+  height: 140px;
+  overflow: visible;
+}
+
+.student-chart-gridline {
+  stroke: #e7ecf4;
+  stroke-width: 0.8;
+  stroke-dasharray: 2 2;
+}
+
+.student-chart-line {
+  fill: none;
+  stroke: #3c59cf;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.student-chart-dot {
+  fill: #3c59cf;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  transition: r 150ms ease, fill 150ms ease;
+  cursor: pointer;
+}
+
+.student-chart-dot:hover {
+  r: 3.5;
+  fill: #223ca7;
+}
+
+.student-chart-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: #7b8ba4;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.student-chart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 38px 20px;
+  color: #7b8ba4;
+  text-align: center;
+  gap: 10px;
+}
+
+/* Attendance Distribution Multi-Bar */
+.overview-attendance-summary {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #edf1f7;
+}
+
+.attendance-bar-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 650;
+  color: #3b4d6a;
+}
+
+.attendance-bar-label small {
+  color: #7b8ba4;
+}
+
+.attendance-multi-bar {
+  display: flex;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #edf1f7;
+}
+
+.bar-segment {
+  height: 100%;
+  transition: width 300ms ease;
+}
+
+.bar-segment.bar-present {
+  background: #22c55e;
+}
+
+.bar-segment.bar-absent {
+  background: #ef4444;
+}
+
+.bar-segment.bar-leave {
+  background: #3b82f6;
+}
+
+.attendance-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: #55657e;
+}
+
+.attendance-legend .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.dot-present { background: #22c55e; }
+.dot-absent { background: #ef4444; }
+.dot-leave { background: #3b82f6; }
+
+/* Formula Banner */
+.attendance-formula-banner,
+.progress-advisory-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.attendance-formula-banner {
+  color: #184c7d;
+  background: #edf6ff;
+  border: 1px solid #cfe5fc;
+}
+
+.attendance-formula-banner .formula-icon {
+  color: #2b74ba;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.attendance-formula-banner code {
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #b8d9fa;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #103c68;
+}
+
+.progress-advisory-banner {
+  color: #7a4a09;
+  background: #fef8ee;
+  border: 1px solid #fae4bf;
+}
+
+/* Tables & Panels */
+.student-table-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid #e5ebf4;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(27, 44, 86, 0.03);
+}
+
+.table-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.table-panel-header h2 {
+  margin: 0 0 4px;
+  color: #17233b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.table-panel-header p {
+  margin: 0;
+  color: #72819a;
+  font-size: 13px;
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 650;
+  color: #55657e;
+}
+
+.filter-group select {
+  min-height: 36px;
+  padding: 0 12px;
+  color: #1f2b42;
+  border: 1px solid #dce3ee;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-group select:focus {
+  border-color: #3b57cc;
+  box-shadow: 0 0 0 3px rgba(59, 87, 204, 0.15);
+}
+
+.student-data-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #edf1f7;
+  border-radius: 12px;
+}
+
+.student-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.student-data-table th {
+  padding: 12px 16px;
+  color: #55657e;
+  background: #f8fafc;
+  border-bottom: 1px solid #edf1f7;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.student-data-table td {
+  padding: 14px 16px;
+  color: #1f2b42;
+  border-bottom: 1px solid #edf1f7;
+  vertical-align: middle;
+}
+
+.student-data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.student-data-table tbody tr:hover {
+  background: #f9fbfd;
+}
+
+.table-subject-tag {
+  display: inline-block;
+  color: #3b57cc;
+  font-size: 13px;
+}
+
+.attendance-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.attendance-status-badge.badge-present {
+  color: #12794c;
+  background: #e9fbf2;
+  border: 1px solid #c2f5d9;
+}
+
+.attendance-status-badge.badge-absent {
+  color: #b92c2c;
+  background: #feecec;
+  border: 1px solid #f9cccc;
+}
+
+.attendance-status-badge.badge-leave {
+  color: #1e5ab8;
+  background: #edf5ff;
+  border: 1px solid #cde2fc;
+}
+
+/* Profile Tab */
+.student-profile-card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid #e5ebf4;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 18px rgba(27, 44, 86, 0.03);
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #edf1f7;
+  margin-bottom: 24px;
+}
+
+.profile-big-avatar {
+  display: grid;
+  width: 72px;
+  height: 72px;
+  place-items: center;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #5b7ef8, #3b57cc);
+  color: #ffffff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgba(67, 97, 219, 0.3);
+}
+
+.profile-header-text h2 {
+  margin: 0 0 6px;
+  color: #17233b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.profile-role-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  color: #1a7a58;
+  background: #edfcf5;
+  border: 1px solid #c9f2df;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px 18px;
+  border: 1px solid #edf1f7;
+  border-radius: 12px;
+  background: #fafbfe;
+}
+
+.field-label {
+  color: #7b8ba4;
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field-value {
+  color: #17233b;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.font-mono {
+  font-family: monospace, sans-serif;
+}
+
+.text-muted {
+  color: #8a99b2;
+}
+
+.text-secondary {
+  color: #55657e;
+}
+
+.text-green {
+  color: #15803d;
+}
+
+.text-blue {
+  color: #2563eb;
+}
+
+.profile-notice-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid #dce5fa;
+  border-radius: 14px;
+  background: #f7f9ff;
+  color: #2b3e64;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.profile-notice-box svg {
+  color: #3b57cc;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.profile-notice-box strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #17233b;
+}
+
+/* Progress Explorer Details */
+.progress-summary-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 14px 18px;
+  border: 1px solid #edf1f7;
+  border-radius: 12px;
+  background: #fbfcff;
+  margin-bottom: 16px;
+}
+
+.strip-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-right: 20px;
+}
+
+.strip-item span {
+  color: #7b8ba4;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.strip-item strong {
+  color: #17233b;
+  font-size: 16px;
+}
+
+.trend-up {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #16a34a;
+  font-weight: 700;
+  font-size: 12.5px;
+}
+
+.trend-down {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 12.5px;
+}
+
+/* Empty & Loading States */
+.student-portal-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e5ebf4;
+  border-radius: 18px;
+}
+
+.student-portal-spinner {
+  color: #3b57cc;
+  animation: spin 900ms linear infinite;
+  margin-bottom: 16px;
+}
+
+.student-portal-state h2 {
+  margin: 0 0 8px;
+  color: #17233b;
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+}
+
+.student-portal-state p {
+  max-width: 440px;
+  margin: 0 0 20px;
+  color: #72819a;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.student-portal-error {
+  border-color: #ffd2d2;
+  background: #fffafa;
+}
+
+.student-portal-error svg {
+  color: #dc2626;
+  margin-bottom: 16px;
+}
+
+.student-empty-state,
+.student-empty-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 20px;
+  text-align: center;
+  color: #72819a;
+  gap: 10px;
+}
+
+.student-empty-state h3,
+.student-empty-card-content h4 {
+  margin: 0;
+  color: #1f2b42;
+  font-size: 16px;
+}
+
+.student-empty-state p,
+.student-empty-card-content p {
+  max-width: 380px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* -------------------------------------------------------------
+   GLOBAL DARK MODE THEME STYLING ([data-theme="dark"])
+------------------------------------------------------------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] body {
+  background: #0b101b;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .workspace-page {
+  background: #0b101b;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .workspace-header {
+  background: rgba(14, 21, 35, 0.95);
+  border-bottom-color: #1b263b;
+}
+
+[data-theme="dark"] .workspace-brand strong {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .workspace-brand span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .workspace-user strong {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .workspace-user span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .workspace-user-avatar {
+  background: #1e2d4d;
+  color: #8da4fc;
+}
+
+[data-theme="dark"] .workspace-logout,
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .refresh-button,
+[data-theme="dark"] .student-refresh-button {
+  color: #cbd5e1;
+  background: #141c2d;
+  border-color: #223048;
+}
+
+[data-theme="dark"] .workspace-logout:hover,
+[data-theme="dark"] .theme-toggle:hover,
+[data-theme="dark"] .refresh-button:hover:not(:disabled),
+[data-theme="dark"] .student-refresh-button:hover:not(:disabled) {
+  color: #9bb2ff;
+  background: #1b263c;
+  border-color: #384c73;
+}
+
+[data-theme="dark"] .workspace-navigation {
+  background: #101726;
+  border-bottom-color: #1b263b;
+}
+
+[data-theme="dark"] .workspace-nav-link {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .workspace-nav-link:hover {
+  color: #f1f5f9;
+  background: #172235;
+}
+
+[data-theme="dark"] .workspace-nav-link.active {
+  color: #9db5ff;
+  background: #1a2847;
+  border-color: #2f4370;
+}
+
+/* Cards & Panels in Dark Mode */
+[data-theme="dark"] .faculty-dashboard,
+[data-theme="dark"] .student-management,
+[data-theme="dark"] .student-detail,
+[data-theme="dark"] .attendance-management,
+[data-theme="dark"] .assessment-management,
+[data-theme="dark"] .pa-page,
+[data-theme="dark"] .student-interventions,
+[data-theme="dark"] .spe-page {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .metric-card,
+[data-theme="dark"] .student-kpi-card,
+[data-theme="dark"] .student-portal-header,
+[data-theme="dark"] .student-overview-card,
+[data-theme="dark"] .student-profile-card,
+[data-theme="dark"] .student-table-panel,
+[data-theme="dark"] .analytics-panel,
+[data-theme="dark"] .student-directory-card,
+[data-theme="dark"] .attendance-card,
+[data-theme="dark"] .attendance-summary-card,
+[data-theme="dark"] .attendance-stat,
+[data-theme="dark"] .attendance-filters,
+[data-theme="dark"] .assessment-card,
+[data-theme="dark"] .assessment-history-card,
+[data-theme="dark"] .pa-metric-card,
+[data-theme="dark"] .pa-panel,
+[data-theme="dark"] .intervention-form-card,
+[data-theme="dark"] .intervention-record-card,
+[data-theme="dark"] .spe-panel,
+[data-theme="dark"] .spe-controls,
+[data-theme="dark"] .spe-filter-panel,
+[data-theme="dark"] .spe-metric,
+[data-theme="dark"] .spe-metric-card,
+[data-theme="dark"] .dashboard-secondary-metrics > div,
+[data-theme="dark"] .dataset-toolbar,
+[data-theme="dark"] .student-welcome,
+[data-theme="dark"] .student-report-section {
+  background: #121927;
+  border-color: #1f2c42;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .student-portal-header {
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .dataset-toolbar {
+  background: #101726;
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .student-directory-toolbar,
+[data-theme="dark"] .student-profile-divider,
+[data-theme="dark"] .student-pagination,
+[data-theme="dark"] .student-modal-actions,
+[data-theme="dark"] .intervention-record-meta,
+[data-theme="dark"] .spe-history-row {
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .student-detail-field,
+[data-theme="dark"] .intervention-outcome,
+[data-theme="dark"] .spe-student-banner,
+[data-theme="dark"] .spe-student-summary,
+[data-theme="dark"] .student-report-kpi,
+[data-theme="dark"] .pa-attendance-total {
+  background: #0e1522;
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .dataset-disclaimer,
+[data-theme="dark"] .student-detail-note,
+[data-theme="dark"] .pa-disclaimer,
+[data-theme="dark"] .spe-notice {
+  background: #101c30;
+  border-color: #1d3356;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .dataset-disclaimer strong {
+  color: #8da4fc;
+}
+
+[data-theme="dark"] .dataset-disclaimer p,
+[data-theme="dark"] .student-detail-note p,
+[data-theme="dark"] .pa-disclaimer p,
+[data-theme="dark"] .spe-notice p {
+  color: #cbd5e1;
+}
+
+/* Eyebrows */
+[data-theme="dark"] .workspace-content > .workspace-eyebrow,
+[data-theme="dark"] .student-eyebrow,
+[data-theme="dark"] .attendance-eyebrow,
+[data-theme="dark"] .assessment-eyebrow,
+[data-theme="dark"] .pa-eyebrow,
+[data-theme="dark"] .spe-eyebrow,
+[data-theme="dark"] .spe-student-banner > div > span {
+  color: #8da4fc;
+}
+
+/* Headings (Primary light foreground) */
+[data-theme="dark"] .workspace-content > h1,
+[data-theme="dark"] .dashboard-heading h2,
+[data-theme="dark"] .panel-heading h3,
+[data-theme="dark"] .student-management-heading h2,
+[data-theme="dark"] .student-modal-heading h3,
+[data-theme="dark"] .student-detail-heading h2,
+[data-theme="dark"] .student-profile-identity h1,
+[data-theme="dark"] .student-detail-section-heading h3,
+[data-theme="dark"] .student-welcome h1,
+[data-theme="dark"] .attendance-heading h2,
+[data-theme="dark"] .attendance-card h3,
+[data-theme="dark"] .attendance-history-heading h3,
+[data-theme="dark"] .assessment-heading h2,
+[data-theme="dark"] .assessment-card-title,
+[data-theme="dark"] .assessment-card-title h3,
+[data-theme="dark"] .assessment-history-heading h3,
+[data-theme="dark"] .pa-heading h1,
+[data-theme="dark"] .pa-panel-heading h2,
+[data-theme="dark"] .student-report-heading h3,
+[data-theme="dark"] .intervention-section-heading h3,
+[data-theme="dark"] .intervention-list-heading h3,
+[data-theme="dark"] .intervention-record-top h3,
+[data-theme="dark"] .intervention-empty-state h3,
+[data-theme="dark"] .spe-heading h1,
+[data-theme="dark"] .spe-header h1,
+[data-theme="dark"] .spe-header h2,
+[data-theme="dark"] .spe-panel-heading h2,
+[data-theme="dark"] .spe-student-banner h2,
+[data-theme="dark"] .spe-student-summary h2,
+[data-theme="dark"] .spe-empty h3,
+[data-theme="dark"] .dashboard-state h2,
+[data-theme="dark"] .pa-state h2,
+[data-theme="dark"] .student-detail-state h2,
+[data-theme="dark"] .spe-state h2,
+[data-theme="dark"] .student-identity-text h1,
+[data-theme="dark"] .profile-header-text h2,
+[data-theme="dark"] .overview-card-header h3,
+[data-theme="dark"] .table-panel-header h2 {
+  color: #f1f5f9;
+}
+
+/* Descriptions & Muted Text */
+[data-theme="dark"] .workspace-description,
+[data-theme="dark"] .dashboard-heading p,
+[data-theme="dark"] .panel-heading p,
+[data-theme="dark"] .student-management-heading p,
+[data-theme="dark"] .student-modal-heading p,
+[data-theme="dark"] .student-detail-heading p,
+[data-theme="dark"] .student-profile-identity p,
+[data-theme="dark"] .student-detail-section-heading p,
+[data-theme="dark"] .student-welcome p,
+[data-theme="dark"] .attendance-heading p,
+[data-theme="dark"] .attendance-history-heading p,
+[data-theme="dark"] .assessment-heading p,
+[data-theme="dark"] .assessment-history-heading p,
+[data-theme="dark"] .pa-heading p,
+[data-theme="dark"] .pa-panel-heading p,
+[data-theme="dark"] .student-report-heading p,
+[data-theme="dark"] .student-report-heading > div > p,
+[data-theme="dark"] .intervention-section-heading p,
+[data-theme="dark"] .intervention-list-heading p,
+[data-theme="dark"] .intervention-empty-state p,
+[data-theme="dark"] .spe-heading p,
+[data-theme="dark"] .spe-header p,
+[data-theme="dark"] .spe-panel-heading p,
+[data-theme="dark"] .spe-student-banner p,
+[data-theme="dark"] .spe-student-summary p,
+[data-theme="dark"] .spe-empty p,
+[data-theme="dark"] .dashboard-state p,
+[data-theme="dark"] .pa-state p,
+[data-theme="dark"] .student-detail-state p,
+[data-theme="dark"] .metric-card > p,
+[data-theme="dark"] .metric-detail,
+[data-theme="dark"] .dashboard-secondary-metrics small,
+[data-theme="dark"] .pa-metric-card p,
+[data-theme="dark"] .pa-metric-card > span,
+[data-theme="dark"] .pa-subject-row small,
+[data-theme="dark"] .pa-student-meta,
+[data-theme="dark"] .pa-footnote,
+[data-theme="dark"] .pa-source,
+[data-theme="dark"] .pa-empty,
+[data-theme="dark"] .assessment-empty,
+[data-theme="dark"] .assessment-table td small,
+[data-theme="dark"] .intervention-record-meta,
+[data-theme="dark"] .intervention-student-label,
+[data-theme="dark"] .intervention-filter,
+[data-theme="dark"] .intervention-filter span,
+[data-theme="dark"] .intervention-outcome small,
+[data-theme="dark"] .spe-metric small,
+[data-theme="dark"] .spe-metric-caption,
+[data-theme="dark"] .spe-chart-caption,
+[data-theme="dark"] .spe-chart-axis,
+[data-theme="dark"] .spe-chart-axis span,
+[data-theme="dark"] .spe-chart-label,
+[data-theme="dark"] .spe-chart-empty,
+[data-theme="dark"] .spe-notes,
+[data-theme="dark"] .spe-disclaimer,
+[data-theme="dark"] .chart-footnote,
+[data-theme="dark"] .student-report-kpi > small,
+[data-theme="dark"] .student-report-empty p,
+[data-theme="dark"] .student-department-line,
+[data-theme="dark"] .kpi-sub,
+[data-theme="dark"] .overview-card-header p,
+[data-theme="dark"] .table-panel-header p,
+[data-theme="dark"] .text-secondary {
+  color: #94a3b8;
+}
+
+/* Metric values & strong data */
+[data-theme="dark"] .metric-value,
+[data-theme="dark"] .kpi-value,
+[data-theme="dark"] .field-value,
+[data-theme="dark"] .dashboard-secondary-metrics strong,
+[data-theme="dark"] .dataset-toolbar strong,
+[data-theme="dark"] .attendance-stat strong,
+[data-theme="dark"] .pa-metric-card strong,
+[data-theme="dark"] .pa-attendance-total strong,
+[data-theme="dark"] .pa-attendance-row strong,
+[data-theme="dark"] .pa-student-name,
+[data-theme="dark"] .pa-score-value,
+[data-theme="dark"] .student-directory-summary strong,
+[data-theme="dark"] .student-person-details strong,
+[data-theme="dark"] .student-detail-field > strong,
+[data-theme="dark"] .study-row-heading strong,
+[data-theme="dark"] .assessment-table td strong,
+[data-theme="dark"] .intervention-outcome > strong,
+[data-theme="dark"] .intervention-outcome-values strong,
+[data-theme="dark"] .intervention-record-meta strong,
+[data-theme="dark"] .spe-metric strong,
+[data-theme="dark"] .spe-metric-value,
+[data-theme="dark"] .spe-history-main strong,
+[data-theme="dark"] .spe-history-score strong,
+[data-theme="dark"] .spe-score-cell strong,
+[data-theme="dark"] .spe-empty strong,
+[data-theme="dark"] .spe-alert strong,
+[data-theme="dark"] .student-report-kpi > strong,
+[data-theme="dark"] .student-report-empty strong,
+[data-theme="dark"] .strip-item strong {
+  color: #f1f5f9;
+}
+
+/* Labels, Row Headings & Form Labels */
+[data-theme="dark"] .toolbar-label,
+[data-theme="dark"] .chart-unit,
+[data-theme="dark"] .student-directory-summary span,
+[data-theme="dark"] .student-person-details span,
+[data-theme="dark"] .student-pagination,
+[data-theme="dark"] .attendance-stat span,
+[data-theme="dark"] .dashboard-secondary-metrics > div > span,
+[data-theme="dark"] .study-row-heading,
+[data-theme="dark"] .study-student-count,
+[data-theme="dark"] .grade-count,
+[data-theme="dark"] .grade-label,
+[data-theme="dark"] .chart-legend,
+[data-theme="dark"] .student-detail-field > span,
+[data-theme="dark"] .intervention-detail-label,
+[data-theme="dark"] .spe-metric-label,
+[data-theme="dark"] .pa-attendance-total span,
+[data-theme="dark"] .pa-live-note,
+[data-theme="dark"] .kpi-label,
+[data-theme="dark"] .field-label,
+[data-theme="dark"] .strip-item span,
+[data-theme="dark"] .student-report-kpi > span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .student-form-grid label,
+[data-theme="dark"] .attendance-form label,
+[data-theme="dark"] .attendance-filters label,
+[data-theme="dark"] .assessment-form label,
+[data-theme="dark"] .assessment-filter,
+[data-theme="dark"] .intervention-form label,
+[data-theme="dark"] .intervention-filter label,
+[data-theme="dark"] .intervention-record-update label,
+[data-theme="dark"] .spe-field label,
+[data-theme="dark"] .spe-field span,
+[data-theme="dark"] .intervention-record-grid p,
+[data-theme="dark"] .intervention-outcome-values,
+[data-theme="dark"] .pa-attendance-row {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .pa-subject-top span,
+[data-theme="dark"] .intervention-outcome-change {
+  color: #8da4fc;
+}
+
+/* Interactive Links & Buttons */
+[data-theme="dark"] .student-name-link {
+  color: #8da4fc;
+}
+
+[data-theme="dark"] .student-name-link:hover {
+  color: #b0c2ff;
+}
+
+[data-theme="dark"] .spe-inline-button {
+  color: #8da4fc;
+}
+
+[data-theme="dark"] .spe-inline-button:hover {
+  color: #b0c2ff;
+}
+
+[data-theme="dark"] .student-secondary-button,
+[data-theme="dark"] .student-refresh-button,
+[data-theme="dark"] .student-detail-back,
+[data-theme="dark"] .attendance-secondary-button,
+[data-theme="dark"] .assessment-secondary-button,
+[data-theme="dark"] .pa-secondary-button,
+[data-theme="dark"] .intervention-refresh-button,
+[data-theme="dark"] .spe-secondary-button,
+[data-theme="dark"] .spe-refresh,
+[data-theme="dark"] .student-row-actions button,
+[data-theme="dark"] .student-pagination button,
+[data-theme="dark"] .student-modal-heading > button {
+  color: #cbd5e1;
+  background: #141c2d;
+  border-color: #24344d;
+}
+
+[data-theme="dark"] .student-secondary-button:hover:not(:disabled),
+[data-theme="dark"] .student-refresh-button:hover:not(:disabled),
+[data-theme="dark"] .student-detail-back:hover:not(:disabled),
+[data-theme="dark"] .attendance-secondary-button:hover:not(:disabled),
+[data-theme="dark"] .assessment-secondary-button:hover:not(:disabled),
+[data-theme="dark"] .pa-secondary-button:hover:not(:disabled),
+[data-theme="dark"] .intervention-refresh-button:hover:not(:disabled),
+[data-theme="dark"] .spe-secondary-button:hover:not(:disabled),
+[data-theme="dark"] .spe-refresh:hover:not(:disabled),
+[data-theme="dark"] .student-row-actions button:hover:not(:disabled),
+[data-theme="dark"] .student-pagination button:hover:not(:disabled),
+[data-theme="dark"] .student-modal-heading > button:hover:not(:disabled) {
+  color: #f1f5f9;
+  background: #1b263c;
+  border-color: #3b4e72;
+}
+
+/* Form Controls, Search Wrappers & Inputs */
+[data-theme="dark"] .student-search {
+  background: #0f1624;
+  border-color: #24344d;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .student-search:focus-within {
+  border-color: #4b6de8;
+  box-shadow: 0 0 0 3px rgba(75, 109, 232, 0.2);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea,
+[data-theme="dark"] .student-search input,
+[data-theme="dark"] .student-form-grid input,
+[data-theme="dark"] .attendance-form input,
+[data-theme="dark"] .attendance-form select,
+[data-theme="dark"] .attendance-filters input,
+[data-theme="dark"] .attendance-filters select,
+[data-theme="dark"] .assessment-form input,
+[data-theme="dark"] .assessment-form select,
+[data-theme="dark"] .assessment-form textarea,
+[data-theme="dark"] .assessment-filter input,
+[data-theme="dark"] .intervention-form input,
+[data-theme="dark"] .intervention-form select,
+[data-theme="dark"] .intervention-form textarea,
+[data-theme="dark"] .intervention-filter select,
+[data-theme="dark"] .intervention-record-update select,
+[data-theme="dark"] .intervention-record-update textarea,
+[data-theme="dark"] .spe-field select {
+  color: #f1f5f9;
+  background-color: #0f1624;
+  border-color: #24344d;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] .student-form-grid input:focus,
+[data-theme="dark"] .attendance-form input:focus,
+[data-theme="dark"] .attendance-form select:focus,
+[data-theme="dark"] .attendance-filters input:focus,
+[data-theme="dark"] .attendance-filters select:focus,
+[data-theme="dark"] .assessment-form input:focus,
+[data-theme="dark"] .assessment-form select:focus,
+[data-theme="dark"] .assessment-form textarea:focus,
+[data-theme="dark"] .intervention-form input:focus,
+[data-theme="dark"] .intervention-form select:focus,
+[data-theme="dark"] .intervention-form textarea:focus,
+[data-theme="dark"] .intervention-filter select:focus,
+[data-theme="dark"] .intervention-record-update select:focus,
+[data-theme="dark"] .intervention-record-update textarea:focus,
+[data-theme="dark"] .spe-field select:focus {
+  border-color: #4b6de8;
+  box-shadow: 0 0 0 3px rgba(75, 109, 232, 0.2);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder,
+[data-theme="dark"] .student-search input::placeholder,
+[data-theme="dark"] .student-form-grid input::placeholder,
+[data-theme="dark"] .assessment-form input::placeholder,
+[data-theme="dark"] .intervention-form input::placeholder,
+[data-theme="dark"] .intervention-form textarea::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] select option {
+  background-color: #0f1624;
+  color: #f1f5f9;
+}
+
+/* Tables */
+[data-theme="dark"] .student-table-wrapper,
+[data-theme="dark"] .attendance-table-wrapper,
+[data-theme="dark"] .assessment-table-wrapper,
+[data-theme="dark"] .pa-table-wrap,
+[data-theme="dark"] .spe-table-wrap,
+[data-theme="dark"] .student-report-table-wrap {
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .student-data-table th,
+[data-theme="dark"] .student-table th,
+[data-theme="dark"] .attendance-table th,
+[data-theme="dark"] .assessment-table th,
+[data-theme="dark"] .intervention-table th,
+[data-theme="dark"] .spe-table th,
+[data-theme="dark"] .pa-table th,
+[data-theme="dark"] .student-report-table th,
+[data-theme="dark"] .student-table thead {
+  background: #0e1522;
+  color: #94a3b8;
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .student-data-table td,
+[data-theme="dark"] .student-table td,
+[data-theme="dark"] .attendance-table td,
+[data-theme="dark"] .assessment-table td,
+[data-theme="dark"] .intervention-table td,
+[data-theme="dark"] .spe-table td,
+[data-theme="dark"] .pa-table td,
+[data-theme="dark"] .student-report-table td {
+  color: #cbd5e1;
+  border-color: #1a2538;
+}
+
+[data-theme="dark"] .student-data-table tbody tr:hover,
+[data-theme="dark"] .student-table tbody tr:hover,
+[data-theme="dark"] .attendance-table tbody tr:hover,
+[data-theme="dark"] .assessment-table tbody tr:hover,
+[data-theme="dark"] .intervention-table tbody tr:hover,
+[data-theme="dark"] .spe-table tbody tr:hover,
+[data-theme="dark"] .pa-table tbody tr:hover,
+[data-theme="dark"] .student-report-table tbody tr:hover,
+[data-theme="dark"] .student-recent-row:hover {
+  background: #151e2f;
+}
+
+[data-theme="dark"] .student-table-message {
+  color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .student-table-message strong {
+  color: #f1f5f9;
+}
+
+/* Badges, Chips & Highlights */
+[data-theme="dark"] .student-status-active,
+[data-theme="dark"] .attendance-status-present {
+  background: rgba(37, 129, 75, 0.22);
+  color: #34d399;
+}
+
+[data-theme="dark"] .student-status-inactive {
+  background: rgba(148, 163, 184, 0.16);
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .attendance-status-absent,
+[data-theme="dark"] .priority-high,
+[data-theme="dark"] .priority-urgent {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+[data-theme="dark"] .attendance-status-leave {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .priority-low {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+}
+
+[data-theme="dark"] .assessment-percentage,
+[data-theme="dark"] .intervention-priority,
+[data-theme="dark"] .pa-count-pill,
+[data-theme="dark"] .spe-count,
+[data-theme="dark"] .student-report-percentage,
+[data-theme="dark"] .student-report-count {
+  background: rgba(98, 124, 228, 0.2);
+  color: #9bb2ff;
+}
+
+[data-theme="dark"] .student-summary-icon,
+[data-theme="dark"] .student-avatar,
+[data-theme="dark"] .student-profile-avatar,
+[data-theme="dark"] .student-detail-section-icon,
+[data-theme="dark"] .intervention-heading-icon,
+[data-theme="dark"] .pa-metric-icon,
+[data-theme="dark"] .spe-panel-icon,
+[data-theme="dark"] .spe-avatar,
+[data-theme="dark"] .spe-student-avatar,
+[data-theme="dark"] .student-report-kpi-icon {
+  background: #1a2640;
+  color: #8da4fc;
+}
+
+[data-theme="dark"] .student-profile-avatar {
+  border-color: #121927;
+}
+
+[data-theme="dark"] .metric-blue {
+  background: rgba(82, 114, 217, 0.2);
+  color: #8da4fc;
+}
+
+[data-theme="dark"] .metric-violet {
+  background: rgba(132, 98, 209, 0.2);
+  color: #c4b5fd;
+}
+
+[data-theme="dark"] .metric-green {
+  background: rgba(44, 149, 105, 0.2);
+  color: #34d399;
+}
+
+[data-theme="dark"] .metric-amber {
+  background: rgba(183, 122, 39, 0.2);
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .dataset-status {
+  color: #34d399;
+}
+
+[data-theme="dark"] .status-dot {
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+}
+
+/* Charts & Progress Tracks */
+[data-theme="dark"] .chart-unit {
+  background: #192438;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .grade-chart {
+  border-bottom-color: #1f2c42;
+}
+
+[data-theme="dark"] .study-bar-track,
+[data-theme="dark"] .pa-progress-track,
+[data-theme="dark"] .spe-score-track {
+  background: #1b2538;
+}
+
+[data-theme="dark"] .chart-footnote {
+  border-top-color: #1f2c42;
+}
+
+[data-theme="dark"] .spe-chart-wrap {
+  background: #0e1422;
+  border-color: #1c273b;
+}
+
+[data-theme="dark"] .spe-chart-grid,
+[data-theme="dark"] .spe-grid-line {
+  stroke: #1f2c42;
+}
+
+[data-theme="dark"] .spe-chart-line {
+  stroke: #6082ff;
+}
+
+[data-theme="dark"] .spe-chart-point {
+  fill: #0e1422;
+  stroke: #6082ff;
+}
+
+[data-theme="dark"] .spe-chart-axis {
+  color: #94a3b8;
+}
+
+/* Alerts, Empty & Loading States */
+[data-theme="dark"] .dashboard-inline-error,
+[data-theme="dark"] .student-error,
+[data-theme="dark"] .attendance-error,
+[data-theme="dark"] .assessment-alert-error,
+[data-theme="dark"] .pa-inline-error,
+[data-theme="dark"] .spe-alert,
+[data-theme="dark"] .spe-notice-error {
+  background: #2d1519;
+  border-color: #522329;
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .spe-alert strong {
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .spe-alert p {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .student-notice,
+[data-theme="dark"] .attendance-success,
+[data-theme="dark"] .assessment-alert-success {
+  background: #0d2818;
+  border-color: #1b4d2e;
+  color: #4ade80;
+}
+
+[data-theme="dark"] .dashboard-state,
+[data-theme="dark"] .pa-state,
+[data-theme="dark"] .student-detail-state,
+[data-theme="dark"] .spe-state {
+  background: #121927;
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .intervention-empty-state,
+[data-theme="dark"] .spe-empty,
+[data-theme="dark"] .student-report-empty {
+  background: #121927;
+  border-color: #24344d;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .student-data-table-wrap,
+[data-theme="dark"] .student-recent-row,
+[data-theme="dark"] .profile-field,
+[data-theme="dark"] .progress-summary-strip {
+  background: #0e1522;
+  border-color: #1c273b;
+}
+
+[data-theme="dark"] .recent-name {
+  color: #f1f5f9;
+}
+
+/* Dark mode tabs */
+[data-theme="dark"] .student-tabs-nav {
+  border-bottom-color: #1f2c42;
+}
+
+[data-theme="dark"] .student-tab-btn {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .student-tab-btn:hover {
+  color: #f1f5f9;
+  background: #172235;
+}
+
+[data-theme="dark"] .student-tab-btn.active {
+  color: #9db5ff;
+  background: #1a2847;
+  border-color: #2f4370;
+}
+
+[data-theme="dark"] .tab-counter-badge {
+  color: #9db5ff;
+  background: #24355a;
+}
+
+/* Dark mode chart containers */
+[data-theme="dark"] .student-chart-container,
+[data-theme="dark"] .student-full-chart-wrap {
+  background: #0e1422;
+  border-color: #1c273b;
+}
+
+[data-theme="dark"] .student-chart-gridline {
+  stroke: #1f2c42;
+}
+
+[data-theme="dark"] .student-chart-line {
+  stroke: #6082ff;
+}
+
+[data-theme="dark"] .student-chart-dot {
+  fill: #6082ff;
+  stroke: #0e1422;
+}
+
+[data-theme="dark"] .student-chart-axis {
+  color: #7b8fae;
+}
+
+/* Dark mode banners */
+[data-theme="dark"] .attendance-formula-banner {
+  background: #102138;
+  border-color: #1b365b;
+  color: #9cc6f7;
+}
+
+[data-theme="dark"] .attendance-formula-banner code {
+  background: #091524;
+  border-color: #224370;
+  color: #bfdbfe;
+}
+
+[data-theme="dark"] .progress-advisory-banner {
+  background: #2b1f09;
+  border-color: #4a3411;
+  color: #fde047;
+}
+
+[data-theme="dark"] .profile-notice-box {
+  background: #111a2c;
+  border-color: #203152;
+  color: #b3c5e8;
+}
+
+[data-theme="dark"] .profile-notice-box strong {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .student-portal-state {
+  background: #121927;
+  border-color: #1f2c42;
+}
+
+[data-theme="dark"] .student-portal-state h2,
+[data-theme="dark"] .student-empty-state h3,
+[data-theme="dark"] .student-empty-card-content h4 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .student-portal-error {
+  background: #231215;
+  border-color: #4f1d24;
+}
+
+/* Dark mode Login Page */
+[data-theme="dark"] .auth-page {
+  background: #0b101b;
+}
+
+[data-theme="dark"] .form-panel {
+  background: #0d131f;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .login-content h2 {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .form-description,
+[data-theme="dark"] .form-kicker {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .role-switch {
+  background: #141b29;
+  border-color: #212c40;
+}
+
+[data-theme="dark"] .role-option {
+  color: #94a3b8;
+  background: transparent;
+}
+
+[data-theme="dark"] .role-option:hover {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .role-option.active {
+  color: #9db5ff;
+  background: #1c2742;
+  border-color: #2f4370;
+}
+
+[data-theme="dark"] .input-wrap {
+  background: #111827;
+  border-color: #24344d;
+}
+
+[data-theme="dark"] .input-wrap input {
+  background: transparent;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .secure-label {
+  color: #94a3b8;
+  border-color: #212c40;
+}
+
+[data-theme="dark"] .login-note {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .form-footer {
+  color: #64748b;
+}
+
+/* Dark mode Modals */
+[data-theme="dark"] .student-modal-overlay,
+[data-theme="dark"] .intervention-modal-overlay {
+  background: rgba(4, 7, 14, 0.75);
+}
+
+[data-theme="dark"] .student-modal,
+[data-theme="dark"] .student-modal-card,
+[data-theme="dark"] .intervention-modal-card {
+  background: #131b2a;
+  border-color: #223149;
+  color: #f1f5f9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .student-overview-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .student-portal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .student-portal-header-actions {
+    width: 100%;
+  }
+  .student-refresh-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -342,3 +342,15 @@ export async function updateIntervention(token, id, changes) {
     body: JSON.stringify(changes),
   })
 }
+
+export async function getStudentPortalDashboard(token) {
+  if (!token) {
+    throw new Error('Please sign in to view your student workspace.')
+  }
+
+  return request('/api/student-portal/dashboard', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}

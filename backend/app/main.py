@@ -13,6 +13,7 @@ from app.routers.early_warning import router as early_warning_router
 from app.routers.assessments import router as assessments_router
 from app.routers import attendance
 from app.routers import interventions
+from app.routers import student_portal
 
 
 @asynccontextmanager
@@ -24,6 +25,11 @@ async def lifespan(app: FastAPI):
         database = get_database(client)
 
         database.users.create_index("email", unique=True)
+        database.users.create_index(
+            [("student_profile_id", 1)],
+            unique=True,
+            partialFilterExpression={"student_profile_id": {"$type": "objectId"}},
+        )
 
         database.students.create_index(
             [("student_id", 1)],
@@ -76,6 +82,7 @@ app.include_router(early_warning_router)
 app.include_router(assessments_router)
 app.include_router(attendance.router)
 app.include_router(interventions.router)
+app.include_router(student_portal.router)
 
 @app.get("/")
 def root():
