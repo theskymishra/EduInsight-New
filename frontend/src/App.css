@@ -4114,3 +4114,384 @@
   font-size: 11px;
   line-height: 1.5;
 }
+
+/* Student Progress Explorer */
+.spe-page {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  color: #24324b;
+}
+
+.spe-header,
+.spe-panel-heading,
+.spe-student-summary,
+.spe-history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.spe-header h1 {
+  margin: 0;
+  color: #172b4d;
+  font-size: clamp(23px, 3vw, 30px);
+}
+
+.spe-header p,
+.spe-panel-heading p {
+  margin: 7px 0 0;
+  color: #65738b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.spe-refresh,
+.spe-primary-button,
+.spe-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid #d7e0ee;
+  border-radius: 9px;
+  background: #fff;
+  color: #28466f;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.spe-primary-button {
+  border-color: #2458a6;
+  background: #2458a6;
+  color: #fff;
+}
+
+.spe-refresh:disabled,
+.spe-primary-button:disabled,
+.spe-secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.spe-filter-panel,
+.spe-panel,
+.spe-metric-card {
+  border: 1px solid #e1e8f2;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgb(28 52 84 / 4%);
+}
+
+.spe-filter-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(180px, 1fr);
+  gap: 16px;
+  padding: 20px;
+}
+
+.spe-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.spe-field label {
+  color: #43536d;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.spe-field select {
+  width: 100%;
+  min-height: 43px;
+  padding: 10px 12px;
+  border: 1px solid #d5deeb;
+  border-radius: 9px;
+  background: #fff;
+  color: #24324b;
+  font: inherit;
+  font-size: 13px;
+}
+
+.spe-field select:focus-visible,
+.spe-refresh:focus-visible,
+.spe-primary-button:focus-visible,
+.spe-secondary-button:focus-visible {
+  outline: 3px solid #9bc2ff;
+  outline-offset: 2px;
+}
+
+.spe-student-summary {
+  justify-content: flex-start;
+  padding: 18px 20px;
+  border: 1px solid #dce8f8;
+  border-radius: 12px;
+  background: #f6f9ff;
+}
+
+.spe-student-avatar {
+  display: grid;
+  flex: 0 0 46px;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 12px;
+  background: #e2ecff;
+  color: #2458a6;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.spe-student-summary h2 {
+  margin: 0;
+  color: #203a60;
+  font-size: 17px;
+}
+
+.spe-student-summary p {
+  margin: 5px 0 0;
+  color: #65738b;
+  font-size: 12px;
+}
+
+.spe-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.spe-metric-card {
+  min-width: 0;
+  padding: 18px;
+}
+
+.spe-metric-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #65738b;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.spe-metric-value {
+  display: block;
+  margin-top: 13px;
+  color: #203a60;
+  font-size: clamp(22px, 3vw, 29px);
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.spe-metric-caption {
+  display: block;
+  margin-top: 7px;
+  color: #758198;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.spe-panel {
+  min-width: 0;
+  padding: 21px;
+}
+
+.spe-panel-heading {
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.spe-panel-heading h2 {
+  margin: 0;
+  color: #203a60;
+  font-size: 17px;
+}
+
+.spe-panel-heading p {
+  font-size: 12px;
+}
+
+.spe-chart-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.spe-chart {
+  display: block;
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  overflow: visible;
+}
+
+.spe-chart-grid {
+  stroke: #e7edf5;
+  stroke-width: 1;
+}
+
+.spe-chart-line {
+  fill: none;
+  stroke: #3976d3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.spe-chart-point {
+  fill: #fff;
+  stroke: #3976d3;
+  stroke-width: 2.5;
+}
+
+.spe-chart-label {
+  fill: #6c7b92;
+  font-size: 10px;
+}
+
+.spe-chart-empty {
+  display: grid;
+  min-height: 170px;
+  place-items: center;
+  padding: 24px;
+  color: #758198;
+  font-size: 13px;
+  text-align: center;
+}
+
+.spe-history-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.spe-history-row {
+  align-items: flex-start;
+  padding: 15px 0;
+  border-top: 1px solid #edf1f6;
+}
+
+.spe-history-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.spe-history-main strong {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #2b3f5e;
+  font-size: 13px;
+}
+
+.spe-history-main p {
+  margin: 5px 0 0;
+  color: #748198;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.spe-history-score {
+  flex: 0 0 115px;
+  text-align: right;
+}
+
+.spe-history-score strong {
+  color: #2b4771;
+  font-size: 13px;
+}
+
+.spe-score-track {
+  width: 100%;
+  height: 6px;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #edf1f7;
+}
+
+.spe-score-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #3976d3;
+}
+
+.spe-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid #dce8f8;
+  border-radius: 10px;
+  background: #f6f9ff;
+  color: #536782;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.spe-notice-error {
+  border-color: #f0d2d2;
+  background: #fff7f7;
+  color: #943c3c;
+}
+
+.spe-empty {
+  padding: 30px 18px;
+  color: #758198;
+  text-align: center;
+}
+
+.spe-empty h3 {
+  margin: 10px 0 6px;
+  color: #344865;
+  font-size: 15px;
+}
+
+.spe-empty p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .spe-filter-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .spe-metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .spe-header {
+    align-items: flex-start;
+  }
+
+  .spe-panel {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spe-header {
+    flex-direction: column;
+  }
+
+  .spe-refresh {
+    width: 100%;
+  }
+
+  .spe-history-row {
+    flex-direction: column;
+  }
+
+  .spe-history-score {
+    flex-basis: auto;
+    width: 100%;
+    text-align: left;
+  }
+}

@@ -30,6 +30,7 @@ import StudentDetail from './components/StudentDetail'
 import AssessmentManagement from './components/AssessmentManagement'
 import PerformanceAnalytics from './components/PerformanceAnalytics'
 import StudentInterventions from './components/StudentInterventions'
+import StudentProgressExplorer from './components/StudentProgressExplorer'
 
 function Brand({ light = false }) {
   return (
@@ -695,6 +696,21 @@ function Workspace({ user, token, onLogout }) {
             <ClipboardList size={17} />
             Student Interventions
           </button>
+          <button
+            type="button"
+            className={
+              activeSection === 'student-progress'
+                ? 'workspace-nav-link active'
+                : 'workspace-nav-link'
+            }
+            onClick={() => {
+              setSelectedStudentId(null)
+              setActiveSection('student-progress')
+            }}
+          >
+            <Activity size={17} />
+            Student Progress Explorer
+          </button>
         </nav>
       )}
 
@@ -738,6 +754,8 @@ function Workspace({ user, token, onLogout }) {
             <PerformanceAnalytics token={token} />
           ) : activeSection === 'interventions' ? (
             <StudentInterventions token={token} />
+          ) : activeSection === 'student-progress' ? (
+            <StudentProgressExplorer token={token} />
           ) : (
             <FacultyDashboard token={token} />
           )
