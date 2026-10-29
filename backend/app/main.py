@@ -60,10 +60,12 @@ async def lifespan(app: FastAPI):
         client.close()
 
 
+
 app = FastAPI(
     title="EduInsight API",
     description="Student performance analytics and reporting system",
     version="0.1.0",
+    lifespan=lifespan,
 )
 
 allowed_origins = [
@@ -83,6 +85,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 app.include_router(auth_router)
 app.include_router(analytics_router)
